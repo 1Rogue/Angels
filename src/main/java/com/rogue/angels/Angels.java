@@ -16,10 +16,9 @@
  */
 package com.rogue.angels;
 
+import com.rogue.angels.command.CommandHandler;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -29,6 +28,8 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @version 0.1
  */
 public class Angels extends JavaPlugin {
+    
+    protected CommandHandler commands;
 
     /**
      * No use yet.
@@ -42,36 +43,17 @@ public class Angels extends JavaPlugin {
     }
 
     /**
-     * No use yet.
+     * Registers the command system.
      *
      * @since 0.1
      * @version 0.1
      */
     @Override
     public void onEnable() {
+        getLogger().config("Creating command handler");
+        commands = new CommandHandler(this);
+        getCommand("angels").setExecutor(commands);
         this.getLogger().log(Level.INFO, "{0} is enabled!", this.getName());
-    }
-
-    /**
-     * Main executor of commands. Grabs the appropriate command and executes it.
-     *
-     * @since 0.1
-     * @version 0.1
-     *
-     * @param cs The command executor
-     * @param cmd The command instance
-     * @param string The label of the command
-     * @param args The command arguments
-     *
-     * @return Command success
-     */
-    @Override
-    public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("angels") && cs.hasPermission("angels.version")) {
-            cs.sendMessage("Angels v" + this.getDescription().getVersion() + " - made by " + this.getDescription().getAuthors().toArray()[0]);
-            return true;
-        }
-        return false;
     }
 
     /**
