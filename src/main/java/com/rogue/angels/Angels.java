@@ -18,6 +18,7 @@ package com.rogue.angels;
 
 import com.rogue.angels.command.CommandHandler;
 import com.rogue.angels.listener.AngelsListener;
+import com.rogue.angels.region.PlayArea;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,7 @@ public class Angels extends JavaPlugin {
     
     protected CommandHandler commands;
     protected AngelsListener listener;
+    protected PlayArea parea;
 
     /**
      * No use yet.
@@ -94,5 +96,30 @@ public class Angels extends JavaPlugin {
      */
     public AngelsListener getListener() {
         return listener;
+    }
+    
+    /*
+     * Gets the area for the angels game.
+     * 
+     * @since 0.1
+     * @version 0.1
+     * 
+     * @return The plugin's play area.
+     */
+    public PlayArea getPlayArea() {
+        return parea;
+    }
+    
+    /*
+     * Sets the area for the angels game.
+     * 
+     * @since 0.1
+     * @version 0.1
+     * 
+     * @return The plugin's play area.
+     */
+    public PlayArea setPlayArea(PlayArea p) {
+        parea = p;
+        return parea;
     }
 }
