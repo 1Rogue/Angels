@@ -17,6 +17,7 @@
 package com.rogue.angels;
 
 import com.rogue.angels.command.CommandHandler;
+import com.rogue.angels.listener.AngelsListener;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,6 +31,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Angels extends JavaPlugin {
     
     protected CommandHandler commands;
+    protected AngelsListener listener;
 
     /**
      * No use yet.
@@ -50,7 +52,10 @@ public class Angels extends JavaPlugin {
      */
     @Override
     public void onEnable() {
-        getLogger().config("Creating command handler");
+        this.getLogger().log(Level.INFO, "Creating listener...", this.getName());
+        listener = new AngelsListener(this);
+        Bukkit.getPluginManager().registerEvents(listener, this);
+        getLogger().config("Creating command handler...");
         commands = new CommandHandler(this);
         getCommand("angels").setExecutor(commands);
         this.getLogger().log(Level.INFO, "{0} is enabled!", this.getName());
@@ -77,5 +82,17 @@ public class Angels extends JavaPlugin {
      */
     public static Angels getPlugin() {
         return (Angels) Bukkit.getServer().getPluginManager().getPlugin("Angels");
+    }
+    
+    /**
+     * Gets the plugin's listener
+     * 
+     * @since 0.1
+     * @version 0.1
+     * 
+     * @return The plugin's listener
+     */
+    public AngelsListener getListener() {
+        return listener;
     }
 }
