@@ -1,0 +1,15 @@
+main: com.rogue.angels.Angels
+name: ${project.name}
+prefix: Rejected
+description: Weeping Angels - brought to minecraft!
+version: ${project.version}
+author: 1Rogue
+website: https://github.com/1Rogue
+permissions:
+  angels.*:
+    default: op
+    children:
+      rejected.version: true
+commands:
+  angels:
+    permission: rejected.version
