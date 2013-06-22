@@ -5,6 +5,7 @@ description: Weeping Angels - brought to minecraft!
 version: ${project.version}
 author: 1Rogue
 website: https://github.com/1Rogue
+depend: [WorldEdit]
 permissions:
   angels.*:
     default: op
