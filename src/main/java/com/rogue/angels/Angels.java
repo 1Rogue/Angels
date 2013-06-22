@@ -94,6 +94,6 @@ public class Angels extends JavaPlugin {
      * @return The plugin instance
      */
     public static Angels getPlugin() {
-        return (Angels) Bukkit.getServer().getPluginManager().getPlugin("Rejected");
+        return (Angels) Bukkit.getServer().getPluginManager().getPlugin("Angels");
     }
 }
