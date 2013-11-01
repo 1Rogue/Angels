@@ -20,6 +20,7 @@ import com.rogue.angels.command.subcommand.*;
 import java.util.HashMap;
 import java.util.Map;
 import com.rogue.angels.Angels;
+import com.rogue.angels.game.GameBuilder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,6 +34,7 @@ import org.bukkit.command.CommandSender;
  */
 public final class CommandHandler implements CommandExecutor {
 
+    protected final Map<String, GameBuilder> games = new HashMap<String, GameBuilder>();
     protected final Map<String, SubCommand> commands = new HashMap<String, SubCommand>();
     protected final Angels plugin;
 

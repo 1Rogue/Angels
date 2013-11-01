@@ -17,6 +17,7 @@
 package com.rogue.angels;
 
 import com.rogue.angels.command.CommandHandler;
+import com.rogue.angels.game.GameHandler;
 import com.rogue.angels.listener.AngelsListener;
 import com.rogue.angels.region.PlayArea;
 import java.util.logging.Level;
@@ -32,6 +33,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Angels extends JavaPlugin {
     
     protected CommandHandler commands;
+    protected GameHandler ghandler;
     protected AngelsListener listener;
     protected PlayArea parea;
 
@@ -54,12 +56,14 @@ public class Angels extends JavaPlugin {
      */
     @Override
     public void onEnable() {
-        this.getLogger().log(Level.INFO, "Creating listener...", this.getName());
+        getLogger().config("Creating listener...");
         listener = new AngelsListener(this);
         Bukkit.getPluginManager().registerEvents(listener, this);
         getLogger().config("Creating command handler...");
         commands = new CommandHandler(this);
         getCommand("angels").setExecutor(commands);
+        getLogger().config("Creating game handler...");
+        ghandler = new GameHandler(this);
         this.getLogger().log(Level.INFO, "{0} is enabled!", this.getName());
     }
 
@@ -98,28 +102,15 @@ public class Angels extends JavaPlugin {
         return listener;
     }
     
-    /*
-     * Gets the area for the angels game.
+    /**
+     * Gets the plugin's handler for all the games
      * 
      * @since 0.1
      * @version 0.1
      * 
-     * @return The plugin's play area.
+     * @return The plugin's game system
      */
-    public PlayArea getPlayArea() {
-        return parea;
-    }
-    
-    /*
-     * Sets the area for the angels game.
-     * 
-     * @since 0.1
-     * @version 0.1
-     * 
-     * @return The plugin's play area.
-     */
-    public PlayArea setPlayArea(PlayArea p) {
-        parea = p;
-        return parea;
+    public GameHandler getGameHandler() {
+        return ghandler;
     }
 }

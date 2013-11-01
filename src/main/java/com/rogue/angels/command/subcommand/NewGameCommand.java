@@ -32,10 +32,10 @@ import org.bukkit.entity.Player;
  * @author 1Rogue
  * @version 0.1
  */
-public class SetRegionCommand implements SubCommand {
+public class NewGameCommand implements SubCommand {
 
     public boolean execute(CommandSender sender, String[] args) {
-        if (!(sender instanceof Player)) {
+        /*if (!(sender instanceof Player)) {
             sender.sendMessage("You must be an in-game player to use this command!");
             return true;
         }
@@ -44,8 +44,9 @@ public class SetRegionCommand implements SubCommand {
         if (sel == null) {
             sender.sendMessage("You must make a WorldEdit Selection first");
         } else {
-            Angels.getPlugin().setPlayArea(new PlayArea(sel));
-        }
+            Angels.getPlugin().getGameHandler().
+            //Angels.getPlugin().setPlayArea(new PlayArea(sel));
+        }*/
         return true;
     }
 
